@@ -1,0 +1,305 @@
+OBJETIVO DO PROJETO
+
+Identificar quais bairros do Rio de Janeiro apresentam as melhores oportunidades para novos hosts de locação de curta temporada, analisando potencial de receita, consistência da demanda e pressão competitiva, com o objetivo de apoiar decisões de entrada e expansão no mercado.
+
+CRITÉRIOS DE SUCESSO
+
+O projeto será considerado bem-sucedido se conseguir:
+
+Identificar os bairros com maior potencial de receita.
+
+Encontrar regiões com boa demanda e menor pressão competitiva.
+
+Criar um ranking de oportunidades para novos hosts.
+
+Transformar dados do Airbnb em recomendações acionáveis.
+
+PROBLEMA DE NEGÓCIO
+
+Um investidor ou novo host interessado no mercado de locação de curta temporada no Rio de Janeiro não possui uma visão clara sobre quais bairros oferecem maior potencial de faturamento, demanda consistente e menor nível de concorrência.
+
+Esta análise busca identificar oportunidades de mercado e regiões que apresentam sinais de risco, apoiando decisões mais informadas sobre onde iniciar ou expandir operações de hospedagem.
+
+HIPÓTESES INICIAIS
+
+Bairros da Zona Sul, como Copacabana e Ipanema, apresentam as maiores receitas estimadas devido à alta demanda turística, porém possuem níveis elevados de concorrência.
+
+Bairros menos turísticos apresentam menor faturamento, mas podem oferecer oportunidades devido à menor saturação de anúncios.
+
+Imóveis do tipo "casa/apartamento inteiro" geram receitas superiores às de quartos privados.
+
+Bairros com melhores avaliações dos hóspedes tendem a apresentar maiores taxas de ocupação.
+
+Existe um grupo de bairros que oferece melhor equilíbrio entre receita potencial e concorrência do que os destinos turísticos tradicionais.
+
+PERGUNTAS QUE A ANÁLISE DEVE RESPONDER
+
+1. Potencial de Receita
+
+Quais são os 5 bairros com maior receita estimada mensal e anual?
+
+Qual é a tarifa média diária (ADR) por bairro?
+
+Como a receita estimada varia entre os diferentes tipos de imóvel?
+
+Como a sazonalidade influencia a receita ao longo do ano?
+
+2. Consistência da Demanda
+
+
+
+Quais bairros apresentam as maiores e menores taxas de ocupação?
+
+Quais bairros possuem maior concentração de imóveis com baixa atividade ou baixa quantidade de avaliações?
+
+Existe relação entre avaliações dos hóspedes e ocupação dos imóveis?
+
+Quais bairros apresentam receita consistente ao longo do ano, independentemente da sazonalidade?
+
+3. Pressão Competitiva do Mercado
+
+Quais bairros concentram o maior número de anúncios ativos?
+
+Quais regiões apresentam maior densidade de anúncios por km²?
+
+Existe relação entre alta concorrência e redução da taxa de ocupação?
+
+Quais bairros apresentam baixa concorrência e boa demanda?
+
+4. Oportunidades para Novos Hosts
+
+Quais bairros oferecem o melhor equilíbrio entre receita potencial, ocupação e nível de concorrência?
+
+Qual tipologia de imóvel apresenta melhor desempenho em cada região?
+
+Quais bairros representam oportunidades pouco exploradas para novos anfitriões?
+
+METODOLOGIA DA ANÁLISE
+
+A análise será conduzida através das seguintes etapas:
+
+1. Preparação dos dados
+
+Tratamento dos dados brutos.
+
+Remoção de inconsistências.
+
+Padronização dos bairros.
+
+Criação das métricas de desempenho.
+
+2. Análise de Receita
+
+Cálculo de ADR.
+
+Estimativa de receita.
+
+Cálculo de RevPAR.
+
+3. Análise de Demanda
+
+Cálculo da taxa de ocupação.
+
+Avaliação da consistência da demanda.
+
+Análise de sazonalidade.
+
+4. Análise Competitiva
+
+Quantidade de anúncios por bairro.
+
+Densidade de anúncios por km².
+
+Relação entre concorrência e desempenho.
+
+5. Recomendação
+
+Criação de ranking de oportunidades.
+
+Identificação dos bairros recomendados.
+
+KPI Principal (OMTM)
+
+RevPAR
+
+Receita potencial gerada por unidade disponível, considerando a relação entre preço médio da diária (ADR) e taxa de ocupação.
+
+KPIs Financeiros
+
+ADR
+
+Receita estimada mensal
+
+Receita estimada anual
+
+Receita estimada por anúncio ativo
+
+KPIs de Demanda
+
+Taxa de ocupação
+
+Avaliação média dos hóspedes
+
+Número médio de avaliações
+
+KPIs Competitivos
+
+Número de anúncios ativos
+
+Densidade de anúncios por km²
+
+Participação do bairro no mercado total
+
+PÚBLICO-ALVO
+
+Investidores interessados em locação de curta temporada
+
+Gestores de imóveis para hospedagem
+
+Hosts iniciantes
+
+Proprietários que desejam avaliar oportunidades de expansão
+
+DATASETS UTILIZADOS
+
+Inside Airbnb — Rio de Janeiro
+
+Período dos dados: Extração realizada em 24 de junho de 2026.
+
+Arquivos utilizados
+
+listings.csv.gz
+
+calendar.csv.gz
+
+Finalidade
+
+Fornecer informações sobre:
+
+Preço das diárias
+
+Disponibilidade
+
+Tipo de imóvel
+
+Bairro
+
+Avaliações dos hóspedes
+
+Características dos anúncios
+
+Dados derivados
+
+
+
+Receita estimada
+
+ADR
+
+RevPAR
+
+Taxa de ocupação
+
+Receita estimada por anúncio ativo
+
+Densidade de anúncios por km²
+
+Índice de oportunidade
+
+DataRio — Base Geográfica dos Bairros
+
+Extração realizada em 15  de julho de 2026.
+
+Arquivos utilizados
+
+Limite_de_Bairros.csv
+
+Limite_de_Bairros.geojson
+
+Limite_de_Bairros.shp
+
+Finalidade
+
+Fornecer:
+
+Área territorial dos bairros
+
+Limites geográficos oficiais
+
+Base para mapas
+
+Cálculo de densidade de anúncios por km²
+
+Permissões de acesso:
+
+Os dados utilizados são públicos e disponibilizados para fins de pesquisa e análise através das plataformas Inside Airbnb e DataRio.
+
+LIMITAÇÕES DA ANÁLISE
+
+A receita é uma estimativa baseada em preço e disponibilidade dos anúncios.
+
+O dataset não possui custos operacionais como condomínio, IPTU, limpeza e manutenção.
+
+A taxa de ocupação é uma estimativa baseada na disponibilidade dos calendários dos anúncios, podendo apresentar diferenças em relação à ocupação real dos imóveis.
+
+Dados representam um retrato do mercado no período analisado.
+
+A análise não representa garantia de retorno financeiro futuro, pois o mercado de curta temporada sofre influência de fatores externos como eventos, turismo e mudanças regulatórias.
+
+MODELO DE PRIORIZAÇÃO DAS OPORTUNIDADES
+
+Para identificar os bairros mais atrativos para novos hosts, será desenvolvido um índice de oportunidade baseado nos principais indicadores de desempenho.
+
+O índice combinará fatores relacionados à geração de receita, consistência da demanda e pressão competitiva.
+
+Indicadores relacionados à pressão competitiva serão considerados de forma inversa no cálculo do índice, pois maior concentração de anúncios pode indicar maior disputa por demanda e maior dificuldade de entrada para novos hosts.
+
+Potencial de Receita (40%)
+
+RevPAR
+
+Receita estimada por anúncio ativo
+
+Consistência da Demanda (30%)
+
+Taxa de ocupação
+
+Avaliação média dos hóspedes
+
+Pressão Competitiva (30%)
+
+Número de anúncios ativos
+
+Densidade de anúncios por km²
+
+RECOMENDAÇÃO FINAL
+
+Com base no Índice de Oportunidade desenvolvido, quais bairros apresentam o melhor equilíbrio entre potencial de receita, consistência da demanda e menor pressão competitiva para novos hosts ingressarem no mercado de locação de curta temporada no Rio de Janeiro?
+
+FERRAMENTAS UTILIZADAS
+
+Power BI
+
+Power Query
+
+DAX
+
+Excel
+
+Gemini (apoio à documentação e revisão)
+
+LINKS
+
+GitHub:
+
+Dashboard:
+
+Relatório:
+
+Autor
+
+Adriano Costa Pereira
+
+Analista de Dados Júnior
+
+Rio de Janeiro - RJ

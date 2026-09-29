@@ -1,0 +1,12 @@
+# Dados brutos
+01_Dados brutos/calendar.csv/
+01_Dados brutos/listings.csv/
+01_Dados brutos/calendar.csv
+01_Dados brutos/listings.csv
+
+# Arquivos compactados de dados
+*.csv.gz
+
+# Arquivos temporários
+*.tmp
+~$*
