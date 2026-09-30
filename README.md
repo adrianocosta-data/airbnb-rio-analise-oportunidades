@@ -6,6 +6,10 @@ A análise combina três dimensões principais — **receita estimada, ocupaçã
 
 **Tecnologias:** Power BI • Power Query • DAX • Git • GitHub
 
+[Ver dashboard em PDF](03-visualizacoes/analise-final.pdf) •
+[Arquivo Power BI](02-powerbi/airbnb-rio-analise-final.pbix) •
+[Dicionário de dados](04-documentacao/dicionario-de-dados.xlsx)
+
 O dashboard foi desenvolvido em duas camadas:
 
 - **Visão Simplificada:** leitura rápida dos principais indicadores, ranking e destaques de oportunidade.
