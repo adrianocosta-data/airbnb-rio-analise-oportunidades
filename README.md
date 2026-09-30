@@ -662,8 +662,7 @@ Ela apresenta:
 - recomendação;
 - limitações resumidas da análise.
 
-![Visão Simplificada](04_visualizacoes/visão-simplificada.png)
-
+![Visão Simplificada](03-visualizacoes/visão-simplificada.png)
 ---
 
 ## Visão Analítica
@@ -684,8 +683,7 @@ Ela permite explorar:
 
 Enquanto a Visão Simplificada prioriza comunicação e síntese, a Visão Analítica oferece maior profundidade para explorar os fatores que explicam os resultados.
 
-![Visão Analítica](04_visualizacoes/visão-analítica.png)
-
+![Visão Analítica](03-visualizacoes/visão-analítica.png)
 ---
 
 # Conclusão
