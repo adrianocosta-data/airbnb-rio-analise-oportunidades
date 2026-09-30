@@ -9,6 +9,12 @@ O dashboard foi desenvolvido em duas camadas:
 - **Visão Simplificada:** leitura rápida dos principais indicadores, ranking e destaques de oportunidade.
 - **Visão Analítica:** exploração mais detalhada das relações entre receita, ocupação e concorrência.
 
+## Dashboard
+
+### Visão Simplificada
+
+![Visão Simplificada](03-visualizacoes/visão-simplificada.png)
+
 ---
 
 ## Objetivo do Projeto
@@ -662,7 +668,6 @@ Ela apresenta:
 - recomendação;
 - limitações resumidas da análise.
 
-![Visão Simplificada](03-visualizacoes/visão-simplificada.png)
 ---
 
 ## Visão Analítica
