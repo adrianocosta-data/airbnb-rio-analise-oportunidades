@@ -4,6 +4,8 @@ Projeto de análise de dados desenvolvido no **Power BI** com dados públicos do
 
 A análise combina três dimensões principais — **receita estimada, ocupação e concorrência** — para comparar bairros sob diferentes perspectivas e apoiar uma triagem inicial de oportunidades.
 
+**Tecnologias:** Power BI • Power Query • DAX • Git • GitHub
+
 O dashboard foi desenvolvido em duas camadas:
 
 - **Visão Simplificada:** leitura rápida dos principais indicadores, ranking e destaques de oportunidade.
