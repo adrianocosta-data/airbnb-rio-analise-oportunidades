@@ -19,7 +19,7 @@ O dashboard foi desenvolvido em duas camadas:
 
 ### Visão Simplificada
 
-![Visão Simplificada](03-visualizacoes/visão-simplificada.png)
+![Visão Simplificada](03-visualizacoes/visao-simplificada.png)
 
 ### Principais achados
 
@@ -701,8 +701,7 @@ Ela permite explorar:
 
 Enquanto a Visão Simplificada prioriza comunicação e síntese, a Visão Analítica oferece maior profundidade para explorar os fatores que explicam os resultados.
 
-![Visão Analítica](03-visualizacoes/visão-analítica.png)
----
+![Visão Analítica](03-visualizacoes/visao-analitica.png)---
 
 # Conclusão
 
