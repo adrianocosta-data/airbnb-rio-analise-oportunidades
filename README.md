@@ -15,6 +15,13 @@ O dashboard foi desenvolvido em duas camadas:
 
 ![Visão Simplificada](03-visualizacoes/visão-simplificada.png)
 
+### Principais achados
+
+- **Leblon** aparece como a melhor oportunidade geral no cenário padrão do modelo.
+- **Ipanema** se destaca pela combinação entre receita estimada e ocupação.
+- **Urca** apresenta uma combinação favorável entre receita e menor pressão competitiva.
+
+> O ranking é uma ferramenta de triagem e depende dos filtros e dos pesos atribuídos a receita, ocupação e concorrência.
 ---
 
 ## Objetivo do Projeto
