@@ -6,9 +6,7 @@ A análise combina três dimensões principais — **receita estimada, ocupaçã
 
 **Tecnologias:** Power BI • Power Query • DAX • Git • GitHub
 
-[Ver dashboard em PDF](03-visualizacoes/analise-final.pdf) •
-[Arquivo Power BI](02-powerbi/airbnb-rio-analise-final.pbix) •
-[Dicionário de dados](04-documentacao/dicionario-de-dados.xlsx)
+[Ver dashboard em PDF](03-visualizacoes/analise-final.pdf) • [Arquivo Power BI](02-powerbi/airbnb-rio-analise-final.pbix) • [Dicionário de dados](04-documentacao/dicionario-de-dados.xlsx)
 
 O dashboard foi desenvolvido em duas camadas:
 
@@ -28,14 +26,15 @@ O dashboard foi desenvolvido em duas camadas:
 - **Urca** apresenta uma combinação favorável entre receita e menor pressão competitiva.
 
 > O ranking é uma ferramenta de triagem e depende dos filtros e dos pesos atribuídos a receita, ocupação e concorrência.
+
 ---
 
 ## Objetivo do Projeto
 
-Identificar quais bairros do Rio de Janeiro apresentam melhores oportunidades para novos hosts de locação de curta temporada, considerando:
+Identificar quais bairros do Rio de Janeiro apresentam melhores oportunidades para novos anfitriões de locação de curta temporada, considerando:
 
 - potencial de receita;
-- consistência da demanda;
+- ocupação estimada como indicador de demanda;
 - pressão competitiva.
 
 O objetivo é transformar os dados públicos do Airbnb em informações úteis para apoiar decisões de entrada e expansão no mercado de hospedagem de curta duração.
@@ -44,30 +43,28 @@ O objetivo é transformar os dados públicos do Airbnb em informações úteis p
 
 ## Critérios de Sucesso
 
-O projeto será considerado bem-sucedido se conseguir:
+A versão entregue do projeto contempla:
 
-- identificar bairros com maior potencial de receita;
-- encontrar regiões com boa demanda e menor pressão competitiva;
-- criar um ranking de oportunidades para novos hosts;
-- comparar bairros sob diferentes perspectivas de desempenho;
-- transformar os resultados em recomendações acionáveis;
-- explicitar as limitações da análise e evitar conclusões além do que os dados permitem.
+- Identificação de bairros com maior potencial de receita estimada;
+- Comparação entre demanda e pressão competitiva;
+- Construção de um ranking de oportunidades para novos anfitriões;
+- Análise dos bairros sob diferentes perspectivas de desempenho;
+- Apresentação de orientações para investigações adicionais;
+- Documentação das limitações metodológicas e das incertezas dos dados.
 
 ---
 
 ## Problema de Negócio
 
-Um investidor ou novo host interessado no mercado de locação de curta temporada no Rio de Janeiro não possui, de forma imediata, uma visão clara sobre quais bairros combinam:
+Um novo anfitrião interessado no mercado de locação de curta temporada no Rio de Janeiro precisa decidir **quais bairros merecem uma investigação antes de iniciar sua operação**.
 
-- bom potencial de faturamento;
-- demanda consistente;
-- menor pressão competitiva.
+Entretanto, uma receita estimada elevada não significa necessariamente uma oportunidade favorável. É preciso considerar também a demanda e a quantidade de anúncios concorrentes.
 
-Bairros muito procurados podem apresentar receitas elevadas, mas também forte concorrência. Por outro lado, regiões menos saturadas podem oferecer oportunidades interessantes mesmo com menor volume absoluto de receita.
+**Pergunta central da análise:**
 
-A análise busca organizar essas diferentes dimensões para identificar bairros que merecem maior atenção e apoiar decisões mais informadas sobre onde iniciar ou expandir operações de hospedagem.
+Quais bairros apresentam o equilíbrio mais favorável entre receita estimada, ocupação e pressão competitiva?
 
-> **Importante:** a análise não estima retorno financeiro real sobre o investimento, pois não inclui custos de aquisição, financiamento, manutenção, impostos ou operação do imóvel.
+> **Limite da análise:** o projeto identifica sinais de oportunidade de mercado, mas não calcula o retorno real sobre o investimento, pois não inclui custos de aquisição, financiamento e operação do imóvel.
 
 ---
 
@@ -75,19 +72,24 @@ A análise busca organizar essas diferentes dimensões para identificar bairros 
 
 Antes da construção do dashboard, foram definidas algumas hipóteses para orientar a exploração dos dados.
 
-1. **Zona Sul com alta receita e alta concorrência**  
+1. **Zona Sul com alta receita e alta concorrência**
+
    Bairros como Copacabana e Ipanema tendem a apresentar receitas elevadas devido à forte demanda turística, mas também enfrentam maior pressão competitiva.
 
-2. **Menor saturação pode compensar menor receita**  
+2. **Menor saturação pode compensar menor receita**
+
    Bairros menos turísticos podem apresentar faturamento inferior aos destinos tradicionais, porém oferecer oportunidades devido ao menor número de anúncios concorrentes.
 
-3. **Imóveis inteiros apresentam maior potencial de receita**  
+3. **Imóveis inteiros apresentam maior potencial de receita**
+
    Anúncios classificados como casa ou apartamento inteiro tendem a gerar receitas superiores às de quartos privados ou compartilhados.
 
-4. **Avaliações podem estar associadas à ocupação**  
+4. **Avaliações podem estar associadas à ocupação**
+
    Bairros ou anúncios com melhores avaliações dos hóspedes podem apresentar maiores taxas de ocupação.
 
-5. **Existem oportunidades além dos bairros turísticos tradicionais**  
+5. **Existem oportunidades além dos bairros turísticos tradicionais**
+
    Alguns bairros podem apresentar um equilíbrio mais favorável entre receita, ocupação e concorrência, tornando-se alternativas interessantes para novos anfitriões.
 
 ---
@@ -97,34 +99,26 @@ Antes da construção do dashboard, foram definidas algumas hipóteses para orie
 ### 1. Potencial de Receita
 
 - Quais bairros apresentam maior receita estimada?
-- Qual é o ADR estimado por bairro?
-- Como o potencial de receita varia entre os diferentes tipos de acomodação?
-- Quais bairros apresentam maior RevPAR estimado?
-- A sazonalidade influencia significativamente os resultados observados?
+- Como ADR, RevPAR e tipo de acomodação ajudam a compreender as diferenças de desempenho?
 
-### 2. Consistência da Demanda
+### 2. Ocupação Estimada e Demanda
 
-- Quais bairros apresentam as maiores e menores taxas de ocupação estimada?
-- Existem bairros com boa ocupação mesmo fora dos destinos turísticos mais conhecidos?
-- Existe relação entre avaliações dos hóspedes e ocupação?
-- Os resultados sugerem demanda consistente ou dependência de períodos específicos?
+- Quais bairros apresentam maior ocupação estimada?
+- O que a comparação com o calendário de disponibilidade permite investigar?
 
 ### 3. Pressão Competitiva
 
-- Quais bairros concentram o maior número de anúncios?
-- Quais áreas apresentam maior pressão competitiva?
-- Existe relação entre maior concorrência e menor ocupação?
-- Quais bairros combinam receita relevante com menor número de concorrentes?
+- Quais bairros concentram mais anúncios?
+- Quais combinam receita relevante com menor pressão competitiva?
+- Uma concorrência elevada implica necessariamente menor ocupação?
 
-### 4. Oportunidades para Novos Hosts
+### 4. Oportunidades para Novos Anfitriões
 
-- Quais bairros oferecem o melhor equilíbrio entre receita, ocupação e concorrência?
-- Quais bairros se destacam quando receita e ocupação recebem maior atenção?
-- Quais bairros apresentam boa receita com menor pressão competitiva?
-- O ranking de oportunidade altera a percepção obtida ao analisar apenas receita?
-- Quais regiões merecem investigação adicional antes de uma decisão de entrada no mercado?
+- Quais bairros apresentam melhor equilíbrio entre receita, ocupação e concorrência?
+- Como o Índice de Oportunidade altera a interpretação obtida ao observar somente receita?
+- Quais mercados merecem investigação adicional?
 
----
+**Questões exploratórias não concluídas nesta versão:** sazonalidade, associação entre avaliações e ocupação e superioridade sistemática de determinados tipos de acomodação.
 
 ## Escopo da Análise
 
@@ -145,6 +139,12 @@ O projeto identifica sinais de oportunidade no mercado de hospedagem, mas não s
 Os dados são públicos e foram obtidos no **Inside Airbnb**, referentes ao município do Rio de Janeiro.
 
 A coleta utilizada no projeto corresponde a **24 de junho de 2026**.
+
+**Fonte oficial:** [Inside Airbnb — Get the Data](https://insideairbnb.com/get-the-data/).
+
+Os arquivos CSV de maior volume não foram incluídos no repositório GitHub. Para reproduzir a análise, utilize as bases `listings` e `calendar` referentes à coleta do Rio de Janeiro de 24/06/2026.
+
+O [dicionário de dados](04-documentacao/dicionario-de-dados.xlsx) documenta as variáveis utilizadas no projeto.
 
 ### `listings.csv`
 
@@ -178,7 +178,7 @@ Ele foi usado principalmente para investigar a disponibilidade e compreender as 
 
 ## Controle de Qualidade dos Dados
 
-Durante o projeto foi identificado um problema de compatibilidade entre uma versão inicial do `calendar.csv` e a base de anúncios.
+Durante o projeto, foi identificado um problema de compatibilidade entre uma versão inicial do `calendar.csv` e a base de anúncios.
 
 Ao comparar os identificadores dos anúncios entre as duas tabelas, nenhuma correspondência foi encontrada.
 
@@ -219,64 +219,67 @@ Essas inconsistências foram corrigidas antes da utilização dos filtros por re
 
 ## Modelo de Dados
 
-O modelo foi estruturado principalmente a partir das seguintes tabelas:
+O modelo foi estruturado utilizando as seguintes tabelas:
 
-- `fato_anuncios` — informações dos anúncios;
-- `calendar` — disponibilidade diária;
-- `Dim região` — classificação dos bairros por região;
-- `Medidas` — medidas DAX utilizadas no dashboard.
+- `fato_anuncios` — tabela principal com as informações dos anúncios;
+- `calendar` — disponibilidade diária dos imóveis;
+- `Dim região` — dimensão utilizada para classificar os bairros por região;
+- `Medidas` — tabela dedicada à organização das medidas DAX.
 
-A tabela `fato_anuncios` funciona como a principal fonte das análises de bairro, receita, ocupação e concorrência.
+### Relacionamentos principais
 
-O relacionamento entre `fato_anuncios` e `calendar` utiliza o identificador do anúncio:
+| Tabela de origem | Tabela relacionada | Cardinalidade |
+|---|---|---|
+| `Dim região[Bairro]` | `fato_anuncios[Bairro]` | 1 para muitos |
+| `fato_anuncios[ID Anúncio]` | `calendar[listing_id]` | 1 para muitos |
 
-`fato_anuncios[ID Anúncio]` → `calendar[listing_id]`
+A separação permite utilizar os filtros regionais nas análises dos anúncios e relacionar cada imóvel aos respectivos registros de disponibilidade no calendário.
 
 ---
 
 ## Métricas e KPIs
 
+Os indicadores foram selecionados para analisar o desempenho dos bairros sob diferentes perspectivas.
+
 ### Receita Mediana Estimada
 
-A mediana foi priorizada em diversas análises porque a distribuição de preços e receitas apresenta valores extremos.
+Representa a mediana da receita anual estimada dos anúncios no contexto selecionado.
 
-Isso reduz a influência dos outliers e representa melhor o desempenho típico dos anúncios de um bairro.
+A mediana foi priorizada para reduzir a influência de valores extremos e representar melhor o desempenho típico dos anúncios.
 
 ### ADR Estimado
 
-**ADR (Average Daily Rate)** representa o valor médio da diária.
+O *Average Daily Rate* é utilizado como indicador do valor médio diário no modelo.
 
-Ele ajuda a compreender quanto os anúncios conseguem cobrar pelas noites comercializadas.
+Sua interpretação deve considerar as características e limitações da base utilizada.
 
 ### Taxa de Ocupação Estimada
 
-A ocupação utilizada na análise vem da variável:
+Calculada a partir da média da variável `estimated_occupancy_l365d` no contexto selecionado.
 
-`estimated_occupancy_l365d`
-
-No dashboard, a medida é calculada como a média da ocupação estimada dos anúncios no contexto selecionado.
-
-Essa variável representa uma **estimativa**, e não reservas diretamente observadas.
+É uma estimativa produzida pelo Inside Airbnb, não uma observação direta de reservas confirmadas.
 
 ### RevPAR Estimado
 
-**RevPAR (Revenue per Available Room)** combina preço e ocupação em um único indicador.
+Combina o valor da diária com a ocupação, permitindo avaliar as duas dimensões conjuntamente.
 
-Conceitualmente:
+**Relação conceitual:**
 
 `RevPAR = ADR × Taxa de Ocupação`
 
+O indicador representa desempenho estimado, não lucro ou retorno sobre investimento.
+
 ### Número de Anúncios
 
-O número de anúncios é utilizado como aproximação da **pressão competitiva** existente em cada bairro.
+Utilizado como aproximação da pressão competitiva em cada bairro.
 
-Quanto maior a quantidade de anúncios, maior tende a ser a quantidade de anfitriões disputando a mesma demanda.
+Uma quantidade elevada de anúncios pode indicar maior concorrência, mas também pode estar associada à concentração de demanda. Por isso, o indicador não deve ser interpretado isoladamente.
 
 ---
 
 ## Índice de Oportunidade
 
-Para comparar os bairros em múltiplas dimensões foi criado um **Índice de Oportunidade**.
+Para comparar os bairros em múltiplas dimensões, foi criado um **Índice de Oportunidade**.
 
 O índice combina:
 
@@ -286,7 +289,11 @@ O índice combina:
 
 ### Fórmula conceitual
 
-`Índice de Oportunidade = Receita × 40% + Ocupação × 30% + Concorrência × 30%`
+`Índice de Oportunidade = (0,40 × Score de Receita) + (0,30 × Score de Ocupação) + (0,30 × Score de Concorrência)`
+
+**Interpretação dos pesos:** a distribuição de 40% para receita, 30% para ocupação e 30% para concorrência representa uma premissa metodológica definida neste projeto, não uma importância universal dessas variáveis.
+
+Os scores permitem comparar os bairros relativamente ao conjunto selecionado. Portanto, os resultados podem mudar conforme os filtros aplicados. Um score elevado indica uma combinação favorável dentro do modelo, não garantia de rentabilidade.
 
 Os componentes foram normalizados antes da combinação para permitir a comparação de variáveis em escalas diferentes.
 
@@ -310,54 +317,47 @@ Como alguns bairros possuem quantidade de anúncios muito superior aos demais, f
 
 ## Critério de Elegibilidade
 
-O ranking considera apenas bairros com:
+Para participar do ranking de oportunidades, o bairro precisa apresentar **pelo menos 100 anúncios no contexto analisado**.
 
-**100 ou mais anúncios**
+Esse limite foi adotado para reduzir a instabilidade das comparações, especialmente em bairros com amostras muito pequenas.
 
-Esse limite foi adotado para reduzir a influência de bairros com poucas observações, nos quais pequenas variações poderiam produzir rankings pouco representativos.
+Bairros abaixo do limite não recebem classificação no Índice de Oportunidade.
 
-O valor de 100 anúncios é uma decisão metodológica deste projeto e não representa um padrão definido pelo Inside Airbnb.
+**Importante:** a exclusão não significa que esses bairros apresentam baixo potencial econômico, apenas que não atendem ao critério mínimo estabelecido para esta comparação.
 
 ---
 
 ## Interpretação do Ranking
 
-O ranking deve ser interpretado como uma ferramenta de **triagem de oportunidades**, e não como uma recomendação automática de investimento.
+O Índice de Oportunidade funciona como uma ferramenta de comparação e triagem inicial de bairros para novos anfitriões.
 
-Um bairro bem classificado apresenta uma combinação relativamente favorável entre:
+Sua interpretação considera três aspectos:
 
-- receita estimada;
-- ocupação estimada;
-- pressão competitiva.
+- **Receita:** maior potencial de geração de receita estimada.
+- **Ocupação:** maior nível de utilização estimada dos imóveis.
+- **Concorrência:** menor pressão competitiva recebe uma pontuação mais favorável, conforme a transformação utilizada no modelo.
 
-Entretanto, o índice não considera fatores como:
+O ranking é dinâmico: os resultados podem mudar conforme os filtros aplicados e dependem dos pesos definidos para cada dimensão.
 
-- preço de aquisição do imóvel;
-- aluguel;
-- condomínio;
-- impostos;
-- manutenção;
-- financiamento;
-- regulamentação;
-- custos operacionais.
+Além da classificação geral, o dashboard apresenta duas perspectivas complementares: receita combinada com ocupação e receita combinada com concorrência.
 
-Por isso, um bairro com score elevado deve ser entendido como um candidato para investigação adicional.
+**Um bairro na primeira posição não representa automaticamente o melhor investimento imobiliário.** A decisão exige também avaliação dos custos de aquisição, operação, regulamentação e características específicas do imóvel.
 
 ---
 
-# Respostas às Perguntas de Negócio
+## Respostas às Perguntas de Negócio
 
-## 1. Potencial de Receita
+### 1. Potencial de Receita
 
-### Quais bairros apresentam maior potencial de receita?
+#### Quais bairros apresentam maior potencial de receita?
 
-Os resultados mostram que bairros da Zona Sul continuam aparecendo entre os mercados com maior potencial de receita estimada.
+Os resultados mostram que bairros da Zona Sul aparecem entre os mercados com maior potencial de receita estimada.
 
 No cenário padrão da Visão Simplificada, bairros como **Leblon e Ipanema** aparecem entre os principais destaques.
 
 Entretanto, analisar somente receita pode ser enganoso, pois bairros com maior faturamento potencial também podem apresentar níveis elevados de concorrência.
 
-### Qual é o ADR estimado por bairro?
+#### Qual é o ADR estimado por bairro?
 
 O ADR varia significativamente entre os bairros.
 
@@ -365,7 +365,7 @@ Bairros mais valorizados e com forte demanda turística tendem a apresentar tari
 
 O ADR foi utilizado principalmente em conjunto com a ocupação para construir o RevPAR estimado.
 
-### Como o potencial de receita varia entre os tipos de acomodação?
+#### Como o potencial de receita varia entre os tipos de acomodação?
 
 O dashboard permite filtrar a análise por tipo de acomodação e comparar:
 
@@ -380,7 +380,7 @@ Entretanto, esta versão do projeto não realizou um teste estatístico específ
 
 **Conclusão:** a pergunta pode ser explorada pelo dashboard, mas não foi respondida de forma conclusiva nesta versão.
 
-### Como a sazonalidade influencia a receita?
+#### Como a sazonalidade influencia a receita?
 
 A sazonalidade não foi analisada em profundidade nesta versão do projeto.
 
@@ -390,15 +390,15 @@ O `calendar.csv` cobre aproximadamente um ano, mas foi utilizado principalmente 
 
 ---
 
-## 2. Consistência da Demanda
+### 2. Ocupação Estimada e Demanda
 
-### Quais bairros apresentam maiores taxas de ocupação estimada?
+#### Quais bairros apresentam maiores taxas de ocupação estimada?
 
 A taxa de ocupação varia entre os bairros e foi utilizada como principal indicador de demanda no ranking.
 
-Bairros com ocupação elevada não são necessariamente os melhores candidatos para novos hosts, pois também podem apresentar maior concorrência.
+Bairros com ocupação elevada não são necessariamente os melhores candidatos para novos anfitriões, pois também podem apresentar maior concorrência.
 
-### A indisponibilidade do calendário confirma a ocupação estimada?
+#### A indisponibilidade do calendário confirma a ocupação estimada?
 
 Não diretamente.
 
@@ -415,13 +415,13 @@ Isso não significa necessariamente que a ocupação estimada esteja incorreta, 
 
 Portanto, a indisponibilidade foi utilizada como indicador complementar, e não como validação direta da ocupação estimada.
 
-### Existe relação entre avaliações e ocupação?
+#### Existe relação entre avaliações e ocupação?
 
 A hipótese foi considerada durante a definição inicial do projeto, mas não foi testada de forma suficientemente aprofundada para estabelecer uma conclusão confiável.
 
 **Status: não avaliada de forma conclusiva.**
 
-### Existem bairros com boa demanda fora dos destinos turísticos tradicionais?
+#### Existem bairros com boa demanda fora dos destinos turísticos tradicionais?
 
 Sim.
 
@@ -429,15 +429,15 @@ A análise mostra que observar apenas os bairros turísticos mais conhecidos pod
 
 ---
 
-## 3. Pressão Competitiva
+### 3. Pressão Competitiva
 
-### Quais bairros concentram maior número de anúncios?
+#### Quais bairros concentram maior número de anúncios?
 
 A quantidade de anúncios varia fortemente entre os bairros.
 
 Destinos turísticos tradicionais apresentam maior concentração de imóveis, o que pode aumentar a pressão competitiva enfrentada por novos anfitriões.
 
-### Existe relação entre alta concorrência e menor ocupação?
+#### Existe relação entre alta concorrência e menor ocupação?
 
 Os dados permitem comparar as duas dimensões, mas não foi estabelecida uma relação causal entre concorrência e ocupação.
 
@@ -449,7 +449,7 @@ Um bairro pode apresentar simultaneamente:
 
 Portanto, concorrência elevada não deve ser interpretada automaticamente como baixa demanda.
 
-### Quais bairros combinam boa receita com menor concorrência?
+#### Quais bairros combinam boa receita com menor concorrência?
 
 Essa pergunta é representada diretamente no gráfico de:
 
@@ -464,11 +464,11 @@ Esses bairros são tratados como candidatos para investigação adicional, e nã
 
 ---
 
-## 4. Oportunidades para Novos Hosts
+### 4. Oportunidades para Novos Anfitriões
 
-### Quais bairros oferecem o melhor equilíbrio entre receita, ocupação e concorrência?
+#### Quais bairros oferecem o melhor equilíbrio entre receita, ocupação e concorrência?
 
-Para responder essa pergunta foi criado o **Índice de Oportunidade**.
+Para responder a essa pergunta, foi criado o **Índice de Oportunidade**.
 
 No cenário padrão da Visão Simplificada, o dashboard destaca:
 
@@ -478,7 +478,7 @@ No cenário padrão da Visão Simplificada, o dashboard destaca:
 
 Esses resultados são dinâmicos e podem mudar quando o usuário altera os filtros de região, bairro ou tipo de acomodação.
 
-### O ranking muda a percepção obtida ao analisar apenas receita?
+#### O ranking muda a percepção obtida ao analisar apenas receita?
 
 Sim.
 
@@ -494,7 +494,7 @@ Da mesma forma, um bairro com receita um pouco menor pode subir no ranking ao ap
 
 Esse é o principal valor do Índice de Oportunidade: evitar decisões baseadas em uma única métrica.
 
-### Quais bairros representam oportunidades pouco exploradas?
+#### Quais bairros representam oportunidades pouco exploradas?
 
 A análise identifica bairros que merecem investigação adicional quando apresentam combinações favoráveis de:
 
@@ -506,7 +506,7 @@ Esses bairros devem ser tratados como candidatos para uma segunda etapa de anál
 
 ---
 
-# Validação das Hipóteses Iniciais
+## Validação das Hipóteses Iniciais
 
 | Hipótese | Resultado | Interpretação |
 |---|---|---|
@@ -518,9 +518,9 @@ Esses bairros devem ser tratados como candidatos para uma segunda etapa de anál
 
 ---
 
-# Principais Resultados
+## Principais Resultados
 
-A análise mostrou que avaliar bairros apenas pela receita estimada não é suficiente para identificar oportunidades para novos hosts.
+A análise mostrou que avaliar bairros apenas pela receita estimada não é suficiente para identificar oportunidades para novos anfitriões.
 
 Os principais resultados foram:
 
@@ -529,114 +529,59 @@ Os principais resultados foram:
 - alguns bairros ganham relevância quando receita, ocupação e concorrência são avaliadas em conjunto;
 - o Índice de Oportunidade altera a leitura obtida quando se observa apenas faturamento;
 - a concorrência precisa ser interpretada junto com a demanda;
-- o uso de mediana reduziu a influência de valores extremos;
+- o uso da mediana reduziu a influência de valores extremos;
 - a comparação com o `calendar.csv` mostrou que indisponibilidade e ocupação estimada não são métricas equivalentes.
 
-Na configuração padrão da Visão Simplificada, o dashboard destaca:
+---
 
-- **Leblon** — melhor oportunidade geral segundo o índice;
-- **Ipanema** — destaque na combinação entre receita e ocupação;
-- **Urca** — destaque na combinação entre receita e menor pressão competitiva.
+## Recomendações
 
-Esses resultados são dinâmicos e podem mudar conforme os filtros aplicados no dashboard.
+Com base nos resultados, recomenda-se utilizar o dashboard como uma ferramenta de triagem para identificar bairros que merecem investigação adicional.
+
+### Aplicações práticas
+
+- **Análise inicial:** utilizar o Índice de Oportunidade para identificar bairros com um equilíbrio favorável entre receita estimada, ocupação e concorrência.
+- **Prioridade em receita e demanda:** consultar a perspectiva que combina receita e ocupação.
+- **Atenção à competição:** utilizar a perspectiva de receita e concorrência para identificar alternativas com menor concentração relativa de anúncios.
+- **Comparação regional:** aplicar os filtros para investigar oportunidades em diferentes regiões do Rio de Janeiro.
+
+### Antes de uma decisão de investimento
+
+Recomenda-se complementar os resultados com:
+
+- custos de aquisição ou aluguel;
+- despesas operacionais e tributárias;
+- regulamentação aplicável à locação;
+- sazonalidade da demanda;
+- características e localização específica de cada imóvel.
+
+**O dashboard não determina onde investir. Ele organiza evidências para tornar a investigação inicial mais estruturada.**
 
 ---
 
-# Recomendações
+## Limitações da Análise
 
-Os resultados devem ser utilizados como ponto de partida para uma análise de investimento mais detalhada.
+Os resultados devem ser interpretados considerando as seguintes limitações metodológicas:
 
-Para um novo host, recomenda-se:
+- **Indicadores estimados:** receita e ocupação são estimativas disponibilizadas pelo Inside Airbnb, não registros financeiros ou reservas efetivamente confirmadas.
+- **Disponibilidade do calendário:** datas indisponíveis podem representar reservas ou bloqueios realizados pelos anfitriões. Portanto, indisponibilidade não equivale diretamente à ocupação.
+- **Recorte temporal:** os dados utilizados correspondem à coleta de 24/06/2026. Os resultados podem mudar em outros períodos.
+- **Concorrência:** a quantidade de anúncios foi utilizada como aproximação da pressão competitiva, mas não representa todas as características da competição local.
+- **Critério de elegibilidade:** bairros com menos de 100 anúncios não participam do ranking. Isso limita a comparação, mas não significa ausência de oportunidades nesses mercados.
+- **Pesos do índice:** a distribuição 40% receita, 30% ocupação e 30% concorrência é uma premissa metodológica. Outras distribuições podem produzir classificações diferentes.
+- **Custos não considerados:** o projeto não incorpora aquisição ou aluguel do imóvel, manutenção, tributação e demais despesas operacionais.
 
-1. **Não escolher um bairro apenas pela receita estimada.**  
-   Avaliar conjuntamente ocupação e pressão competitiva.
+**Ressalvas adicionais:** a quantidade de anúncios não captura integralmente a competição local, pois desconsidera diferenças de qualidade, preço, avaliações, capacidade, disponibilidade e localização dentro de cada bairro. Além disso, as relações identificadas entre os indicadores são descritivas e exploratórias, não constituindo evidência de causalidade.
 
-2. **Investigar os bairros destacados pelo ranking.**  
-   O score serve como ferramenta de triagem, indicando mercados que merecem análise adicional.
+### Possíveis aprofundamentos
 
-3. **Comparar diferentes tipos de acomodação.**  
-   O desempenho pode mudar significativamente entre imóveis inteiros, quartos privados e outras categorias.
+Uma próxima versão poderá incorporar custos imobiliários, análise detalhada de sazonalidade, comparação por tipologia de acomodação e testes de sensibilidade dos pesos do índice.
 
-4. **Avaliar custos antes da decisão final.**  
-   Preço de aquisição, aluguel, condomínio, manutenção, impostos e financiamento podem alterar completamente a viabilidade econômica.
-
-5. **Considerar o contexto local.**  
-   Regulamentação, infraestrutura, segurança, mobilidade e perfil dos hóspedes não estão totalmente representados na base analisada.
-
-O dashboard identifica sinais de oportunidade, mas não determina automaticamente onde investir.
+**Conclusão metodológica:** o ranking identifica sinais relativos de oportunidade de mercado, não a rentabilidade efetiva de um investimento.
 
 ---
 
-# Limitações da Análise
-
-## Ocupação estimada
-
-A variável de ocupação utilizada é uma estimativa produzida pelo Inside Airbnb.
-
-Ela não representa diretamente reservas confirmadas.
-
-A indisponibilidade presente no `calendar.csv` também não pode ser tratada como ocupação real, pois uma data pode estar indisponível por diferentes motivos, incluindo bloqueios realizados pelo anfitrião.
-
-## Custos não considerados
-
-A análise não inclui:
-
-- preço de aquisição do imóvel;
-- aluguel;
-- financiamento;
-- condomínio;
-- impostos;
-- manutenção;
-- limpeza;
-- taxas de plataformas;
-- custos operacionais.
-
-Por esse motivo, o projeto não calcula retorno sobre investimento real.
-
-## Pesos do Índice de Oportunidade
-
-O ranking utiliza:
-
-- Receita: 40%;
-- Ocupação: 30%;
-- Concorrência: 30%.
-
-Outras combinações de pesos podem produzir rankings diferentes.
-
-## Critério mínimo de anúncios
-
-O ranking considera apenas bairros com pelo menos 100 anúncios.
-
-O limite foi definido para reduzir a influência de amostras pequenas, mas permanece uma decisão metodológica do projeto.
-
-## Concorrência
-
-O número de anúncios é utilizado como aproximação da pressão competitiva.
-
-Essa métrica não considera fatores como:
-
-- qualidade dos imóveis concorrentes;
-- preço;
-- avaliações;
-- capacidade;
-- disponibilidade;
-- localização dentro do próprio bairro.
-
-## Sazonalidade
-
-A sazonalidade não foi analisada em profundidade nesta versão.
-
-Apesar da utilização do `calendar.csv`, não foi construída uma análise temporal completa de receita e demanda ao longo do ano.
-
-## Relações entre variáveis
-
-Relações observadas entre receita, ocupação, concorrência ou avaliações não devem ser interpretadas automaticamente como relações causais.
-
-Os resultados são descritivos e exploratórios.
-
----
-
-# Ferramentas Utilizadas
+## Ferramentas Utilizadas
 
 - **Power BI Desktop** — modelagem, medidas, visualizações e dashboard;
 - **Power Query** — limpeza, transformação e padronização dos dados;
@@ -659,11 +604,11 @@ Os resultados são descritivos e exploratórios.
 
 ---
 
-# Dashboard
+## Detalhamento do Dashboard
 
 O dashboard foi dividido em duas páginas com objetivos diferentes.
 
-## Visão Simplificada
+### Visão Simplificada
 
 A **Visão Simplificada** foi desenvolvida para permitir uma leitura rápida dos principais resultados.
 
@@ -683,7 +628,7 @@ Ela apresenta:
 
 ---
 
-## Visão Analítica
+### Visão Analítica
 
 A **Visão Analítica** foi desenvolvida para permitir uma investigação mais detalhada dos resultados.
 
@@ -699,38 +644,20 @@ Ela permite explorar:
 - bairros que merecem investigação adicional;
 - diferenças entre tipos de acomodação e regiões.
 
-Enquanto a Visão Simplificada prioriza comunicação e síntese, a Visão Analítica oferece maior profundidade para explorar os fatores que explicam os resultados.
+Enquanto a Visão Simplificada prioriza a comunicação e a síntese dos resultados, a Visão Analítica permite investigar com maior profundidade as relações entre os indicadores de receita, ocupação e concorrência.
 
-![Visão Analítica](03-visualizacoes/visao-analitica.png)---
+![Visão Analítica](03-visualizacoes/visao-analitica.png)
 
-# Conclusão
+---
 
-O projeto mostrou que identificar oportunidades para novos hosts exige mais do que observar quais bairros apresentam maior receita estimada.
+## Conclusão
 
-Mercados com alto faturamento também podem apresentar forte concorrência, enquanto bairros com receita um pouco menor podem oferecer combinações interessantes de demanda e menor saturação.
+O projeto demonstrou a importância de analisar receita, ocupação e concorrência conjuntamente, evitando comparações baseadas exclusivamente no faturamento estimado dos bairros.
 
-Para representar esse equilíbrio, foi criado um **Índice de Oportunidade**, combinando:
+A construção do **Índice de Oportunidade** permitiu transformar diferentes indicadores em uma ferramenta de triagem, oferecendo perspectivas complementares para novos anfitriões interessados no mercado de locação de curta temporada do Rio de Janeiro.
 
-- receita — 40%;
-- ocupação — 30%;
-- concorrência — 30%.
+O desenvolvimento também evidenciou a importância da qualidade dos dados, especialmente por meio da identificação e correção de incompatibilidades entre as bases de anúncios e calendário.
 
-A análise mostra que o ranking multidimensional produz uma leitura diferente daquela obtida ao considerar apenas receita.
+**Principal entrega:** um dashboard executivo e analítico que organiza dados públicos, comunica resultados e apoia a identificação de mercados que merecem investigação adicional.
 
-No cenário padrão do dashboard, **Leblon, Ipanema e Urca** aparecem sob diferentes perspectivas de oportunidade. Esses resultados, porém, dependem das métricas, dos pesos definidos e dos filtros selecionados.
-
-O projeto também evidenciou a importância da qualidade dos dados. Durante a análise foi identificado um `calendar.csv` incompatível com a base de anúncios, e a comparação dos identificadores permitiu detectar e corrigir o problema antes que ele afetasse as conclusões.
-
-Por fim, os resultados devem ser interpretados como uma ferramenta de **triagem e apoio à decisão**, e não como uma recomendação automática de investimento.
-
-Uma decisão real exigiria complementar a análise com informações como:
-
-- preço de aquisição ou aluguel do imóvel;
-- custos operacionais;
-- impostos e condomínio;
-- regulamentação;
-- sazonalidade;
-- características específicas do imóvel;
-- contexto urbano e localização dentro de cada bairro.
-
-O principal resultado do projeto, portanto, não é indicar simplesmente “onde investir”, mas oferecer uma estrutura de análise que permita comparar bairros de forma mais consistente e identificar quais mercados merecem investigação adicional.
+O projeto não determina onde investir, mas oferece uma estrutura baseada em evidências para apoiar decisões mais informadas.
